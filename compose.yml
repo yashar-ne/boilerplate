@@ -24,7 +24,7 @@ services:
     env_file:
       - ./app/api.docker.env
     ports:
-      - "5678:5678"
+      - "8000:80"
     hostname: api
     networks:
       - backend-network
