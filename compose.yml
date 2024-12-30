@@ -1,0 +1,37 @@
+version: '3.9'    
+services:
+  db:
+    image: postgres:17.2-alpine
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: app_name
+    ports:
+      - "5432:5432"
+    hostname: db
+    networks:
+      - backend-network
+  api:
+    build: ./app
+    volumes:
+      - ./app:/code
+    depends_on:
+      - db
+    links:
+      - db
+    env_file:
+      - ./app/api.docker.env
+    ports:
+      - "5678:5678"
+    hostname: api
+    networks:
+      - backend-network
+volumes:
+  db_data:
+networks:
+  backend-network:
+    external: false
+
+
