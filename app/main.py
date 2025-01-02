@@ -1,8 +1,10 @@
+from dotenv import load_dotenv
 from fastapi import FastAPI
+import sqlalchemy
 import uvicorn
 
+load_dotenv()
 app = FastAPI()
-
 
 @app.get("/")
 def read_root():
