@@ -1,2 +1,2 @@
-from app.models.base import Base
-from app.models.users import Users
+from app.db import Base
+from .user import User
