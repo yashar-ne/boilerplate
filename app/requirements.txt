@@ -1,11 +1,11 @@
 fastapi[standard]
 uvicorn
 sqlalchemy
+asyncio
 pydantic
 numpy
 pandas
 python-dotenv
 pyjwt[crypto]
-psycopg2-binary
 alembic
 pydantic_settings

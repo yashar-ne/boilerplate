@@ -1,2 +1,2 @@
-from app.db import Base
+from .base import Base
 from .user import User

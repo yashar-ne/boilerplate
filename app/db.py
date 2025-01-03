@@ -5,13 +5,9 @@ from typing import AsyncIterator, Annotated
 from fastapi import Depends
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
-from sqlalchemy.orm import DeclarativeBase
 
 db_connection_string = os.getenv("DB_CONNECTION_STRING")
 logger = logging.getLogger(__name__)
-
-class Base(DeclarativeBase):
-    __abstract__ = True
 
 async_engine = create_async_engine(
     db_connection_string,

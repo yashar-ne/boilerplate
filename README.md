@@ -9,5 +9,5 @@ alembic upgrade head
 To generate a new migration run
 
 ```console
-alembic revision -m "Add a column"
+alembic revision --autogenerate -m "Add a column"
 ```
