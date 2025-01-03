@@ -1,6 +1,6 @@
 from pydantic import BaseModel, ConfigDict
 
-class User(BaseModel):
+class UserSchema(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     id: int
@@ -10,5 +10,5 @@ class User(BaseModel):
     is_superuser: bool
     is_active: bool
 
-class UserPrivate(User):
+class UserSchemaPrivate(UserSchema):
     hashed_password: str
