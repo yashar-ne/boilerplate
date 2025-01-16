@@ -13,7 +13,7 @@ async def create(user: UserSchema):
 
 @router.get("/")
 async def read_all():
-    all_user = UserService.read_all()
+    all_user = await UserService.read_all()
     return AllUserSchema.model_validate(all_user)
 
 @router.get("/{user_id}")

@@ -1,7 +1,7 @@
 from typing import AsyncIterator
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from sqlalchemy import select
+from sqlalchemy import select, ScalarResult
 from app.models import User
 
 
@@ -27,11 +27,11 @@ class UserService:
         return await cls.session.scalar(stmt.order_by(User.id))
 
     @classmethod
-    async def read_all(cls) -> AsyncIterator[User]:
+    async def read_all(cls):
         stmt = select(User)
-        stream = await cls.session.stream_scalars(stmt.order_by(User.id))
-        async for row in stream:
-            yield row
+        users = await cls.session.scalars(stmt.order_by(User.id))
+        return users.all()
+
 
     @classmethod
     async def update(cls, user_id: int, user: User) -> User:
